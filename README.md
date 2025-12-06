@@ -23,22 +23,23 @@ o One-hot encoding the labels/attributes
 few examples of each class to get a sense of the data. 
 3. Data Splitting: Split the dataset into training, validation, and test sets. 
 
-Part 2: CVAE Model Implementation (40 points) 
-Encoder Implementation: Implement the CVAE encoder network. The encoder 
-should take both the input data and the one-hot encoded conditional information as 
-input. The output of the encoder should be the mean (z_mean) and log variance 
-(z_log_var) of the latent distribution. Your encoder should be a class that inherits 
-from the appropriate base class of your chosen framework (tf.keras.Model or 
-torch.nn.Module, for example). 
-2. Decoder Implementation: Implement the CVAE decoder network. The decoder 
-should take a sample from the latent space and the one-hot encoded conditional 
-information as input. The output of the decoder should be the reconstructed data 
-point. Like the encoder, your decoder should be a class. 
+Part 2: CVAE Model Implementation 
+1. Encoder Implementation: Implement the encoder network. The encoder should 
+take an image as input and output the mean (z_mean) and log variance (z_log_var) of 
+the latent distribution. Your encoder should be a class that inherits from the 
+appropriate base class of your chosen framework (tf.keras.Model or 
+torch.nn.Module, for example). Consider the use of convolutional layers for image 
+processing. 
+2. Decoder Implementation: Implement the decoder network. The decoder should 
+take a sample from the latent space as input and output the reconstructed image. 
+Like the encoder, your decoder should be a class. The decoder should reverse the 
+layers and operation performed at the encoder. If the encoder uses CNN, the 
+decoder must use Conv2DTranspose to generate a full image again. 
 3. Reparameterization Layer: Implement a custom layer (or function, depending on 
 your framework) to perform the reparameterization trick. This layer should take 
 z_mean and z_log_var as input and output a sample from the latent space. 
-4. CVAE Model Class: Create a CVAE class that encapsulates the encoder, decoder, 
-and reparameterization layer. The CVAE class should have a method to perform the 
+4. VAE Model Class: Create a VAE class that encapsulates the encoder, decoder, and 
+reparameterization layer. The VAE class should have a method to perform the 
 encoding, sampling, and decoding steps. It also should inherit from the base model 
 class of your chosen framework. 
 
